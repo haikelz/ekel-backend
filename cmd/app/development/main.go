@@ -1,13 +1,13 @@
 package main
 
 import (
-	"guestbook-backend/pkg/configs"
-	"guestbook-backend/pkg/server"
+	"ekel-backend/pkg/configs"
+	"ekel-backend/pkg/server"
 
 	_ "github.com/tursodatabase/libsql-client-go/libsql"
 )
 
-// @title Guestbook Backend
+// @title Ekel Backend
 // @version 1.0
 // @termsOfService http://swagger.io/terms/
 // @contact.name API Support

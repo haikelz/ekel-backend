@@ -80,7 +80,7 @@ const file_pkg_entities_user_proto_rawDesc = "" +
 	"\x17pkg/entities/user.proto\x12\bentities\"8\n" +
 	"\x04User\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\busername\x18\x02 \x01(\tR\busernameB Z\x1eguestbook-backend/pkg/entitiesb\x06proto3"
+	"\busername\x18\x02 \x01(\tR\busernameB\x1bZ\x19ekel-backend/pkg/entitiesb\x06proto3"
 
 var (
 	file_pkg_entities_user_proto_rawDescOnce sync.Once

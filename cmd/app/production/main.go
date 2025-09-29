@@ -3,13 +3,13 @@ package app
 import (
 	"net/http"
 
-	"guestbook-backend/pkg/server"
+	"ekel-backend/pkg/server"
 
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 )
 
 // Handle deployment to Vercel Serverless
-// @title Guestbook Backend
+// @title Ekel Backend
 // @version 1.0
 // @termsOfService http://swagger.io/terms/
 // @contact.name API Support

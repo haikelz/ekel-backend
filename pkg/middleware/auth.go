@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"guestbook-backend/pkg/models"
-	"guestbook-backend/pkg/utils"
+	"ekel-backend/pkg/models"
+	"ekel-backend/pkg/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"

@@ -1,4 +1,4 @@
-module guestbook-backend
+module ekel-backend
 
 go 1.23.1
 

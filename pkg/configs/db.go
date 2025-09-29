@@ -1,7 +1,7 @@
 package configs
 
 import (
-	"guestbook-backend/pkg/entities"
+	"ekel-backend/pkg/entities"
 	"log"
 	"os"
 

@@ -4,7 +4,7 @@ const SwaggerJSON = `
 {
     "swagger": "2.0",
     "info": {
-        "title": "Guestbook Backend",
+        "title": "Ekel Backend",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",

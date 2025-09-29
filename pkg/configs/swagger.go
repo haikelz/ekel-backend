@@ -6,7 +6,7 @@ import (
 
 var SwgCfg = swagger.Config{
 	BasePath:    "/",
-	Title:       "Guestbook Backend API Docs",
+	Title:       "Ekel Backend API Docs",
 	Path:        "docs",
 	FileContent: []byte(SwaggerJSON),
 	CacheAge:    60,

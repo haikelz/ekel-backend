@@ -7,9 +7,9 @@
 package models
 
 import (
+	entities "ekel-backend/pkg/entities"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	entities "guestbook-backend/pkg/entities"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -426,11 +426,71 @@ func (x *APISuccessGetUserByEmailResponse) GetData() []*entities.User {
 	return nil
 }
 
+type APISuccessGetWakatimeStatsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StatusCode    int32                  `protobuf:"varint,1,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	Data          *entities.WakaTimeData `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *APISuccessGetWakatimeStatsResponse) Reset() {
+	*x = APISuccessGetWakatimeStatsResponse{}
+	mi := &file_pkg_models_response_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *APISuccessGetWakatimeStatsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*APISuccessGetWakatimeStatsResponse) ProtoMessage() {}
+
+func (x *APISuccessGetWakatimeStatsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_pkg_models_response_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use APISuccessGetWakatimeStatsResponse.ProtoReflect.Descriptor instead.
+func (*APISuccessGetWakatimeStatsResponse) Descriptor() ([]byte, []int) {
+	return file_pkg_models_response_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *APISuccessGetWakatimeStatsResponse) GetStatusCode() int32 {
+	if x != nil {
+		return x.StatusCode
+	}
+	return 0
+}
+
+func (x *APISuccessGetWakatimeStatsResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *APISuccessGetWakatimeStatsResponse) GetData() *entities.WakaTimeData {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 var File_pkg_models_response_proto protoreflect.FileDescriptor
 
 const file_pkg_models_response_proto_rawDesc = "" +
 	"\n" +
-	"\x19pkg/models/response.proto\x12\x06models\x1a\x1cpkg/entities/guestbook.proto\x1a\x17pkg/entities/user.proto\"L\n" +
+	"\x19pkg/models/response.proto\x12\x06models\x1a\x1cpkg/entities/guestbook.proto\x1a\x17pkg/entities/user.proto\x1a\x1bpkg/entities/wakatime.proto\"L\n" +
 	"\x0fAPIHomeResponse\x12\x1f\n" +
 	"\vstatus_code\x18\x01 \x01(\x05R\n" +
 	"statusCode\x12\x18\n" +
@@ -464,7 +524,12 @@ const file_pkg_models_response_proto_rawDesc = "" +
 	"\vstatus_code\x18\x01 \x01(\x05R\n" +
 	"statusCode\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12\"\n" +
-	"\x04data\x18\x03 \x03(\v2\x0e.entities.UserR\x04dataB\x1eZ\x1cguestbook-backend/pkg/modelsb\x06proto3"
+	"\x04data\x18\x03 \x03(\v2\x0e.entities.UserR\x04data\"\x8b\x01\n" +
+	"\"APISuccessGetWakatimeStatsResponse\x12\x1f\n" +
+	"\vstatus_code\x18\x01 \x01(\x05R\n" +
+	"statusCode\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\x12*\n" +
+	"\x04data\x18\x03 \x01(\v2\x16.entities.WakaTimeDataR\x04dataB\x19Z\x17ekel-backend/pkg/modelsb\x06proto3"
 
 var (
 	file_pkg_models_response_proto_rawDescOnce sync.Once
@@ -478,26 +543,29 @@ func file_pkg_models_response_proto_rawDescGZIP() []byte {
 	return file_pkg_models_response_proto_rawDescData
 }
 
-var file_pkg_models_response_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_pkg_models_response_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_pkg_models_response_proto_goTypes = []any{
-	(*APIHomeResponse)(nil),                  // 0: models.APIHomeResponse
-	(*APISuccessResponse)(nil),               // 1: models.APISuccessResponse
-	(*APISuccessGetGuestbookResponse)(nil),   // 2: models.APISuccessGetGuestbookResponse
-	(*APIErrorResponse)(nil),                 // 3: models.APIErrorResponse
-	(*AuthAPISuccessResponse)(nil),           // 4: models.AuthAPISuccessResponse
-	(*AdminInfoResponse)(nil),                // 5: models.AdminInfoResponse
-	(*APISuccessGetUserByEmailResponse)(nil), // 6: models.APISuccessGetUserByEmailResponse
-	(*entities.Guestbook)(nil),               // 7: entities.Guestbook
-	(*entities.User)(nil),                    // 8: entities.User
+	(*APIHomeResponse)(nil),                    // 0: models.APIHomeResponse
+	(*APISuccessResponse)(nil),                 // 1: models.APISuccessResponse
+	(*APISuccessGetGuestbookResponse)(nil),     // 2: models.APISuccessGetGuestbookResponse
+	(*APIErrorResponse)(nil),                   // 3: models.APIErrorResponse
+	(*AuthAPISuccessResponse)(nil),             // 4: models.AuthAPISuccessResponse
+	(*AdminInfoResponse)(nil),                  // 5: models.AdminInfoResponse
+	(*APISuccessGetUserByEmailResponse)(nil),   // 6: models.APISuccessGetUserByEmailResponse
+	(*APISuccessGetWakatimeStatsResponse)(nil), // 7: models.APISuccessGetWakatimeStatsResponse
+	(*entities.Guestbook)(nil),                 // 8: entities.Guestbook
+	(*entities.User)(nil),                      // 9: entities.User
+	(*entities.WakaTimeData)(nil),              // 10: entities.WakaTimeData
 }
 var file_pkg_models_response_proto_depIdxs = []int32{
-	7, // 0: models.APISuccessGetGuestbookResponse.data:type_name -> entities.Guestbook
-	8, // 1: models.APISuccessGetUserByEmailResponse.data:type_name -> entities.User
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8,  // 0: models.APISuccessGetGuestbookResponse.data:type_name -> entities.Guestbook
+	9,  // 1: models.APISuccessGetUserByEmailResponse.data:type_name -> entities.User
+	10, // 2: models.APISuccessGetWakatimeStatsResponse.data:type_name -> entities.WakaTimeData
+	3,  // [3:3] is the sub-list for method output_type
+	3,  // [3:3] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_pkg_models_response_proto_init() }
@@ -511,7 +579,7 @@ func file_pkg_models_response_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pkg_models_response_proto_rawDesc), len(file_pkg_models_response_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

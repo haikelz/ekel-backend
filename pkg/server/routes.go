@@ -1,10 +1,10 @@
 package server
 
 import (
-	"guestbook-backend/pkg/configs"
-	"guestbook-backend/pkg/controllers"
-	"guestbook-backend/pkg/server/routes"
-	"guestbook-backend/pkg/services"
+	"ekel-backend/pkg/configs"
+	"ekel-backend/pkg/controllers"
+	"ekel-backend/pkg/server/routes"
+	"ekel-backend/pkg/services"
 )
 
 func (s *FiberApp) RegisterFiberRoutes() {
@@ -17,6 +17,9 @@ func (s *FiberApp) RegisterFiberRoutes() {
 	guestbookService := services.NewGuestbookService(db)
 	guestbookController := controllers.NewGuestbookController(guestbookService)
 
+	wakatimeService := services.NewWakatimeService()
+	wakatimeController := controllers.NewWakatimeController(wakatimeService)
+
 	// routes.CreateGuestbookRoute(s, guestbookController)
 	routes.GetGuestbookRoute(s, guestbookController)
 	// routes.DeleteGuestbookRoute(s, guestbookController)
@@ -25,4 +28,5 @@ func (s *FiberApp) RegisterFiberRoutes() {
 	// routes.ValidateCookieRoute(s, guestbookController)
 	// routes.GetAllUserByEmailRoute(s, guestbookController)
 	// routes.DeleteUserByEmailRoute(s, guestbookController)
+	routes.GetWakatimeStatsRoute(s, wakatimeController)
 }

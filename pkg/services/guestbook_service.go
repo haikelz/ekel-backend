@@ -1,10 +1,10 @@
 package services
 
 import (
+	"ekel-backend/pkg/entities"
+	"ekel-backend/pkg/models"
+	"ekel-backend/pkg/utils"
 	"errors"
-	"guestbook-backend/pkg/entities"
-	"guestbook-backend/pkg/models"
-	"guestbook-backend/pkg/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
@@ -123,7 +123,7 @@ func (s *GuestbookService) GetAllUserByEmail() ([]*entities.User, error) {
 	users := make([]*entities.User, len(guestbook))
 	for i, guestbook := range guestbook {
 		users[i] = &entities.User{
-			Email:    guestbook.Email,
+			Email:    "", //guestbook.Email,
 			Username: guestbook.Username,
 		}
 	}

@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"guestbook-backend/pkg/configs"
-	"guestbook-backend/pkg/entities"
+	"ekel-backend/pkg/configs"
+	"ekel-backend/pkg/entities"
 
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
@@ -16,6 +16,8 @@ func Env() entities.EnvVariables {
 	_ = v.BindEnv("TURSO_AUTH_TOKEN")
 	_ = v.BindEnv("ADMIN_EMAIL")
 	_ = v.BindEnv("JWT_SECRET")
+	_ = v.BindEnv("WAKATIME_API_URL")
+	_ = v.BindEnv("WAKATIME_API_KEY")
 
 	if err := v.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
@@ -29,5 +31,7 @@ func Env() entities.EnvVariables {
 		ADMIN_EMAIL:        v.GetString("ADMIN_EMAIL"),
 		ADMIN_PASSWORD:     v.GetString("ADMIN_PASSWORD"),
 		JWT_SECRET:         v.GetString("JWT_SECRET"),
+		WAKATIME_API_URL:   v.GetString("WAKATIME_API_URL"),
+		WAKATIME_API_KEY:   v.GetString("WAKATIME_API_KEY"),
 	}
 }

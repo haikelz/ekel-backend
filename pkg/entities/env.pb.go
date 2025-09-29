@@ -28,6 +28,8 @@ type EnvVariables struct {
 	JWT_SECRET         string                 `protobuf:"bytes,3,opt,name=JWT_SECRET,json=JWTSECRET,proto3" json:"JWT_SECRET,omitempty"`
 	TURSO_AUTH_TOKEN   string                 `protobuf:"bytes,4,opt,name=TURSO_AUTH_TOKEN,json=TURSOAUTHTOKEN,proto3" json:"TURSO_AUTH_TOKEN,omitempty"`
 	TURSO_DATABASE_URL string                 `protobuf:"bytes,5,opt,name=TURSO_DATABASE_URL,json=TURSODATABASEURL,proto3" json:"TURSO_DATABASE_URL,omitempty"`
+	WAKATIME_API_KEY   string                 `protobuf:"bytes,6,opt,name=WAKATIME_API_KEY,json=WAKATIMEAPIKEY,proto3" json:"WAKATIME_API_KEY,omitempty"`
+	WAKATIME_API_URL   string                 `protobuf:"bytes,7,opt,name=WAKATIME_API_URL,json=WAKATIMEAPIURL,proto3" json:"WAKATIME_API_URL,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -97,11 +99,25 @@ func (x *EnvVariables) GetTURSO_DATABASE_URL() string {
 	return ""
 }
 
+func (x *EnvVariables) GetWAKATIME_API_KEY() string {
+	if x != nil {
+		return x.WAKATIME_API_KEY
+	}
+	return ""
+}
+
+func (x *EnvVariables) GetWAKATIME_API_URL() string {
+	if x != nil {
+		return x.WAKATIME_API_URL
+	}
+	return ""
+}
+
 var File_pkg_entities_env_proto protoreflect.FileDescriptor
 
 const file_pkg_entities_env_proto_rawDesc = "" +
 	"\n" +
-	"\x16pkg/entities/env.proto\x12\bentities\"\xcd\x01\n" +
+	"\x16pkg/entities/env.proto\x12\bentities\"\xa1\x02\n" +
 	"\fEnvVariables\x12\x1f\n" +
 	"\vADMIN_EMAIL\x18\x01 \x01(\tR\n" +
 	"ADMINEMAIL\x12%\n" +
@@ -109,7 +125,9 @@ const file_pkg_entities_env_proto_rawDesc = "" +
 	"\n" +
 	"JWT_SECRET\x18\x03 \x01(\tR\tJWTSECRET\x12(\n" +
 	"\x10TURSO_AUTH_TOKEN\x18\x04 \x01(\tR\x0eTURSOAUTHTOKEN\x12,\n" +
-	"\x12TURSO_DATABASE_URL\x18\x05 \x01(\tR\x10TURSODATABASEURLB Z\x1eguestbook-backend/pkg/entitiesb\x06proto3"
+	"\x12TURSO_DATABASE_URL\x18\x05 \x01(\tR\x10TURSODATABASEURL\x12(\n" +
+	"\x10WAKATIME_API_KEY\x18\x06 \x01(\tR\x0eWAKATIMEAPIKEY\x12(\n" +
+	"\x10WAKATIME_API_URL\x18\a \x01(\tR\x0eWAKATIMEAPIURLB\x1bZ\x19ekel-backend/pkg/entitiesb\x06proto3"
 
 var (
 	file_pkg_entities_env_proto_rawDescOnce sync.Once

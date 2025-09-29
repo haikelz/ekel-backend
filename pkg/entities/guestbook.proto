@@ -1,10 +1,10 @@
 syntax = "proto3";
 package entities;
 
-option go_package = "guestbook-backend/pkg/entities";
+option go_package = "ekel-backend/pkg/entities";
 
 message Guestbook {
-    string email = 1;
+    string id = 1;
     string username = 2;
     string message = 3;
     string created_at = 4;

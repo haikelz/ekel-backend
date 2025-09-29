@@ -1,5 +1,5 @@
 services:
-  guestbook-backend:
+  ekel-backend:
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,12 +8,7 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    networks:
-      - guestbook-backend-network
-    volumes:
-      - ./logs:/root/logs
-      - ./assets:/root/assets
 
 networks:
-  guestbook-backend-network:
+  ekel-backend-network:
     driver: bridge

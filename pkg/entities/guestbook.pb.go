@@ -23,7 +23,7 @@ const (
 
 type Guestbook struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
 	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -61,9 +61,9 @@ func (*Guestbook) Descriptor() ([]byte, []int) {
 	return file_pkg_entities_guestbook_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Guestbook) GetEmail() string {
+func (x *Guestbook) GetId() string {
 	if x != nil {
-		return x.Email
+		return x.Id
 	}
 	return ""
 }
@@ -93,13 +93,13 @@ var File_pkg_entities_guestbook_proto protoreflect.FileDescriptor
 
 const file_pkg_entities_guestbook_proto_rawDesc = "" +
 	"\n" +
-	"\x1cpkg/entities/guestbook.proto\x12\bentities\"v\n" +
-	"\tGuestbook\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
+	"\x1cpkg/entities/guestbook.proto\x12\bentities\"p\n" +
+	"\tGuestbook\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\busername\x18\x02 \x01(\tR\busername\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\tR\tcreatedAtB Z\x1eguestbook-backend/pkg/entitiesb\x06proto3"
+	"created_at\x18\x04 \x01(\tR\tcreatedAtB\x1bZ\x19ekel-backend/pkg/entitiesb\x06proto3"
 
 var (
 	file_pkg_entities_guestbook_proto_rawDescOnce sync.Once

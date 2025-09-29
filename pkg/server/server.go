@@ -1,7 +1,7 @@
 package server
 
 import (
-	"guestbook-backend/pkg/configs"
+	"ekel-backend/pkg/configs"
 
 	"github.com/gofiber/contrib/fiberzap/v2"
 	"github.com/gofiber/fiber/v2"

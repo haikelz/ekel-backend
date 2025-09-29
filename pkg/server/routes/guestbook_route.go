@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"guestbook-backend/pkg/controllers"
+	"ekel-backend/pkg/controllers"
 
 	"github.com/gofiber/fiber/v2"
 )

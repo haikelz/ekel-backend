@@ -1,10 +1,10 @@
 package controllers
 
 import (
+	"ekel-backend/pkg/entities"
+	"ekel-backend/pkg/models"
+	"ekel-backend/pkg/services"
 	"fmt"
-	"guestbook-backend/pkg/entities"
-	"guestbook-backend/pkg/models"
-	"guestbook-backend/pkg/services"
 	"net/http"
 	"strconv"
 	"strings"
