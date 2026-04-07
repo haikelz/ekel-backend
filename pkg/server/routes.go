@@ -20,6 +20,9 @@ func (s *FiberApp) RegisterFiberRoutes() {
 	wakatimeService := services.NewWakatimeService()
 	wakatimeController := controllers.NewWakatimeController(wakatimeService)
 
+	ihsgService := services.NewIHSGService()
+	ihsgController := controllers.NewIHSGController(ihsgService)
+
 	// routes.CreateGuestbookRoute(s, guestbookController)
 	routes.GetGuestbookRoute(s, guestbookController)
 	// routes.DeleteGuestbookRoute(s, guestbookController)
@@ -29,4 +32,5 @@ func (s *FiberApp) RegisterFiberRoutes() {
 	// routes.GetAllUserByEmailRoute(s, guestbookController)
 	// routes.DeleteUserByEmailRoute(s, guestbookController)
 	routes.GetWakatimeStatsRoute(s, wakatimeController)
+	routes.GetIHSGMarketsRoute(s, ihsgController)
 }
