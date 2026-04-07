@@ -467,7 +467,7 @@ const docTemplate = `{
                 "created_at": {
                     "type": "string"
                 },
-                "email": {
+                "id": {
                     "type": "string"
                 },
                 "message": {
