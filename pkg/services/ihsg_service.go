@@ -143,16 +143,21 @@ func marketDataset(config marketConfig, source string, fetchedAt string, data []
 		Symbol:       config.Symbol,
 		Source:       source,
 		FetchedAt:    fetchedAt,
-		Data:         data,
+		Data:         ihsgPointPointers(data),
 		ErrorMessage: errorMessage,
 	}
 }
 
+func ihsgPointPointers(data []entities.IHSGPoint) []*entities.IHSGPoint {
+	points := make([]*entities.IHSGPoint, len(data))
+	for i := range data {
+		points[i] = &data[i]
+	}
+	return points
+}
+
 func (s *IHSGService) getYahooData(symbol string) ([]entities.IHSGPoint, error) {
 	baseURL := strings.TrimRight(os.Getenv("IHSG_API_URL"), "/")
-	if baseURL == "" {
-		baseURL = "https://query1.finance.yahoo.com"
-	}
 
 	endpoint := fmt.Sprintf("%s/v8/finance/chart/%s?interval=1d&range=5y", baseURL, url.PathEscape(symbol))
 	req, err := http.NewRequest(http.MethodGet, endpoint, nil)

@@ -21,7 +21,3 @@ message AuthRequest {
 message DeleteUserByEmailRequest {
 	string email = 1;
 } 
-
-message IhsgRequest {
-	
-}

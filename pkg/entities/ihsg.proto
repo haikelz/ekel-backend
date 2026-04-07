@@ -1,0 +1,24 @@
+syntax = "proto3";
+package entities;
+
+option go_package = "ekel-backend/pkg/entities";
+
+message IHSGPoint {
+    string date = 1;
+    double open = 2;
+    double high = 3;
+    double low = 4;
+    double close = 5;
+    double volume = 6;
+}
+
+message MarketDataset {
+    string code = 1;
+    string label = 2;
+    string title = 3;
+    string symbol = 4;
+    string source = 5;
+    string fetchedAt = 6;
+    repeated IHSGPoint data = 7;
+    string errorMessage = 8;
+}
