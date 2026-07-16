@@ -1,6 +1,6 @@
 package app
 
-import "ekel-backend/internal/env"
+import "app/internal/env"
 
 type Bootstrap struct {
 	Port string

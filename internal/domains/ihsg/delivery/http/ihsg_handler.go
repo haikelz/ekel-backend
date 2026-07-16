@@ -1,8 +1,8 @@
 package http
 
 import (
-	"ekel-backend/internal/domains/ihsg"
-	"ekel-backend/internal/models"
+	"app/internal/domains/ihsg"
+	"app/internal/models"
 
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"

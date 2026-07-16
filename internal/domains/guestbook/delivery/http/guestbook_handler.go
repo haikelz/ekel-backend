@@ -1,8 +1,8 @@
 package http
 
 import (
-	"ekel-backend/internal/domains/guestbook"
-	"ekel-backend/internal/models"
+	"app/internal/domains/guestbook"
+	"app/internal/models"
 
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"

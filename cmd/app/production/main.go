@@ -1,12 +1,12 @@
 package app
 
 import (
-	"ekel-backend/internal/app"
-	"ekel-backend/internal/config"
+	"app/internal/app"
+	"app/internal/config"
 	"net/http"
 	"sync"
 
-	_ "ekel-backend/docs"
+	_ "app/docs"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/labstack/echo/v4"
 )

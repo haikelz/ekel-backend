@@ -9,12 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"ekel-backend/internal/models"
+	"app/internal/models"
 
-	echoSwagger "github.com/swaggo/echo-swagger"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/sirupsen/logrus"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 func ConfigureServer(e *echo.Echo) {

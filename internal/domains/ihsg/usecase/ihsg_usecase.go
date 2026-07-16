@@ -16,7 +16,7 @@ import (
 	"sync"
 	"time"
 
-	"ekel-backend/internal/domains/ihsg"
+	"app/internal/domains/ihsg"
 )
 
 type ihsgUsecase struct {

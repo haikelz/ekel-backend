@@ -7,9 +7,9 @@
 package main
 
 import (
-	_ "ekel-backend/docs"
-	"ekel-backend/internal/app"
-	"ekel-backend/internal/config"
+	_ "app/docs"
+	"app/internal/app"
+	"app/internal/config"
 
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/labstack/echo/v4"

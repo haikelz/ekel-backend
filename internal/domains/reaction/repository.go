@@ -1,8 +1,8 @@
 package reaction
 
 import (
+	"app/internal/models"
 	"context"
-	"ekel-backend/internal/models"
 )
 
 type ReactionRepository interface {

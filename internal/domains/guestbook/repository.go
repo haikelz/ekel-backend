@@ -1,8 +1,8 @@
 package guestbook
 
 import (
+	"app/internal/models"
 	"context"
-	"ekel-backend/internal/models"
 )
 
 type GuestbookRepository interface {

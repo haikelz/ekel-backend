@@ -1,17 +1,17 @@
 package app
 
 import (
-	guestbookHTTP "ekel-backend/internal/domains/guestbook/delivery/http"
-	guestbookRepository "ekel-backend/internal/domains/guestbook/repository"
-	guestbookUsecase "ekel-backend/internal/domains/guestbook/usecase"
-	ihsgHTTP "ekel-backend/internal/domains/ihsg/delivery/http"
-	ihsgUsecase "ekel-backend/internal/domains/ihsg/usecase"
-	reactionHTTP "ekel-backend/internal/domains/reaction/delivery/http"
-	reactionRepository "ekel-backend/internal/domains/reaction/repository"
-	reactionUsecase "ekel-backend/internal/domains/reaction/usecase"
-	wakatimeHTTP "ekel-backend/internal/domains/wakatime/delivery/http"
-	wakatimeUsecase "ekel-backend/internal/domains/wakatime/usecase"
-	"ekel-backend/internal/env"
+	guestbookHTTP "app/internal/domains/guestbook/delivery/http"
+	guestbookRepository "app/internal/domains/guestbook/repository"
+	guestbookUsecase "app/internal/domains/guestbook/usecase"
+	ihsgHTTP "app/internal/domains/ihsg/delivery/http"
+	ihsgUsecase "app/internal/domains/ihsg/usecase"
+	reactionHTTP "app/internal/domains/reaction/delivery/http"
+	reactionRepository "app/internal/domains/reaction/repository"
+	reactionUsecase "app/internal/domains/reaction/usecase"
+	wakatimeHTTP "app/internal/domains/wakatime/delivery/http"
+	wakatimeUsecase "app/internal/domains/wakatime/usecase"
+	"app/internal/env"
 
 	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"

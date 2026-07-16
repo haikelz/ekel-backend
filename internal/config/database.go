@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"ekel-backend/internal/env"
-	"ekel-backend/internal/models"
+	"app/internal/env"
+	"app/internal/models"
 
 	_ "github.com/tursodatabase/libsql-client-go/libsql"
 	"gorm.io/driver/sqlite"

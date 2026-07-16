@@ -1,8 +1,8 @@
 package http
 
 import (
-	"ekel-backend/internal/domains/wakatime"
-	"ekel-backend/internal/models"
+	"app/internal/domains/wakatime"
+	"app/internal/models"
 
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"

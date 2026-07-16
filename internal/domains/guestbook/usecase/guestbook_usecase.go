@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"ekel-backend/internal/domains/guestbook"
-	"ekel-backend/internal/models"
+	"app/internal/domains/guestbook"
+	"app/internal/models"
 
 	"github.com/sirupsen/logrus"
 )

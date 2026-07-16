@@ -1,4 +1,4 @@
-module ekel-backend
+module app
 
 go 1.25.5
 

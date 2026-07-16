@@ -3,8 +3,8 @@ package repository
 import (
 	"context"
 
-	"ekel-backend/internal/domains/guestbook"
-	"ekel-backend/internal/models"
+	"app/internal/domains/guestbook"
+	"app/internal/models"
 
 	"gorm.io/gorm"
 )

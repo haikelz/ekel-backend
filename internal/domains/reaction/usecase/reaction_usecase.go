@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"ekel-backend/internal/domains/reaction"
-	"ekel-backend/internal/models"
+	"app/internal/domains/reaction"
+	"app/internal/models"
 
 	"github.com/sirupsen/logrus"
 )

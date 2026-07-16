@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"ekel-backend/internal/domains/wakatime"
+	"app/internal/domains/wakatime"
 
 	"github.com/sirupsen/logrus"
 )
