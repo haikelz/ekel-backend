@@ -1,11 +1,19 @@
 package app
 
 import (
+	"ekel-backend/internal/app"
+	"ekel-backend/internal/config"
 	"net/http"
+	"sync"
 
-	"ekel-backend/pkg/server"
+	_ "ekel-backend/docs"
+	_ "github.com/joho/godotenv/autoload"
+	"github.com/labstack/echo/v4"
+)
 
-	"github.com/gofiber/fiber/v2/middleware/adaptor"
+var (
+	handlerOnce sync.Once
+	handler     *echo.Echo
 )
 
 // Handle deployment to Vercel Serverless
@@ -22,10 +30,17 @@ import (
 // @name Authorization
 // @description Enter the token with the `BearerAuth` prefix."
 func Handler(w http.ResponseWriter, r *http.Request) {
-	r.RequestURI = r.URL.String()
+	handlerOnce.Do(func() {
+		config.InitLogger()
+		db := config.InitGorm()
 
-	server := server.New()
-	server.RegisterFiberRoutes()
+		e := echo.New()
+		app.ConfigureServer(e)
+		routeGroups := app.BuildRouteGroups(e)
+		app.RegisterModules(e, db, routeGroups)
 
-	adaptor.FiberApp(server.App).ServeHTTP(w, r)
+		handler = e
+	})
+
+	handler.ServeHTTP(w, r)
 }

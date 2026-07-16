@@ -1,29 +1,28 @@
+// @title Ekel Backend API
+// @version 1.0
+// @description API for Wakatime stats, IHSG market data, and Guestbook.
+// @host localhost:9090
+// @BasePath /api/v1
+
 package main
 
 import (
-	"ekel-backend/pkg/configs"
-	"ekel-backend/pkg/server"
+	_ "ekel-backend/docs"
+	"ekel-backend/internal/app"
+	"ekel-backend/internal/config"
 
-	_ "github.com/tursodatabase/libsql-client-go/libsql"
+	_ "github.com/joho/godotenv/autoload"
+	"github.com/labstack/echo/v4"
 )
 
-// @title Ekel Backend
-// @version 1.0
-// @termsOfService http://swagger.io/terms/
-// @contact.name API Support
-// @contact.url http://www.swagger.io/support
-// @contact.email support@swagger.io
-// @license.name Apache 2.0
-// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-// @securityDefinitions.apikey BearerAuth
-// @in header
-// @name Authorization
-// @description Enter the token with the `BearerAuth` prefix."
 func main() {
-	configs.NewViper()
+	config.InitLogger()
+	db := config.InitGorm()
+	bootstrap := app.InitBootstrap()
 
-	server := server.New()
-	server.RegisterFiberRoutes()
-
-	server.Listen(":4000")
+	e := echo.New()
+	app.ConfigureServer(e)
+	routeGroups := app.BuildRouteGroups(e)
+	app.RegisterModules(e, db, routeGroups)
+	app.StartAndWaitShutdown(e, bootstrap.Port)
 }
