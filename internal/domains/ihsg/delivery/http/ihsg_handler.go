@@ -19,7 +19,7 @@ func NewIhsgHandler(e *echo.Group, uc ihsg.IhsgUsecase) {
 
 // GetMarkets IHSG
 // @Summary Get live market indices
-// @Description Fetch live market data for IHSG, Nikkei 225, S&P 500, SSE Composite, and Tadawul from Yahoo Finance/Stooq. Cached for 5 minutes.
+// @Description Fetch market data for IHSG, Nikkei 225, S&P 500, SSE Composite, and Tadawul from Yahoo Finance/Stooq. Successful refreshes are cached for 30 minutes, with last-known-good data retained during provider failures.
 // @Tags IHSG
 // @Accept json
 // @Produce json

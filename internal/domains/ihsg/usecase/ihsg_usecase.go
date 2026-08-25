@@ -26,6 +26,11 @@ type ihsgUsecase struct {
 	mu         sync.RWMutex
 }
 
+const (
+	successfulRefreshTTL = 30 * time.Minute
+	failedRefreshTTL     = time.Minute
+)
+
 type marketConfig struct {
 	Code        string
 	Label       string
@@ -75,6 +80,7 @@ func (uc *ihsgUsecase) GetMarkets(ctx context.Context) ([]ihsg.MarketDataset, er
 		defer uc.mu.RUnlock()
 		return uc.cache, nil
 	}
+	cachedMarkets := uc.cache
 	uc.mu.RUnlock()
 
 	markets := make([]ihsg.MarketDataset, len(marketConfigs))
@@ -94,12 +100,40 @@ func (uc *ihsgUsecase) GetMarkets(ctx context.Context) ([]ihsg.MarketDataset, er
 		return nil, errors.New("no market data returned")
 	}
 
+	hasFreshData := preserveCachedMarkets(markets, cachedMarkets)
+	cacheTTL := successfulRefreshTTL
+	if !hasFreshData {
+		cacheTTL = failedRefreshTTL
+	}
+
 	uc.mu.Lock()
 	uc.cache = markets
-	uc.cacheUntil = time.Now().Add(5 * time.Minute)
+	uc.cacheUntil = time.Now().Add(cacheTTL)
 	uc.mu.Unlock()
 
 	return markets, nil
+}
+
+func preserveCachedMarkets(markets, cachedMarkets []ihsg.MarketDataset) bool {
+	cachedByCode := make(map[string]ihsg.MarketDataset, len(cachedMarkets))
+	for _, market := range cachedMarkets {
+		if len(market.Data) > 0 {
+			cachedByCode[market.Code] = market
+		}
+	}
+
+	hasFreshData := false
+	for i, market := range markets {
+		if len(market.Data) > 0 {
+			hasFreshData = true
+			continue
+		}
+		if cachedMarket, ok := cachedByCode[market.Code]; ok {
+			markets[i] = cachedMarket
+		}
+	}
+
+	return hasFreshData
 }
 
 func (uc *ihsgUsecase) getMarketData(config marketConfig) ihsg.MarketDataset {

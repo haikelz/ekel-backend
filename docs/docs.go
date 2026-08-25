@@ -32,13 +32,13 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -62,7 +62,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_domains_guestbook.CreateGuestbookRequest"
+                            "$ref": "#/definitions/app_internal_domains_guestbook.CreateGuestbookRequest"
                         }
                     }
                 ],
@@ -72,13 +72,13 @@ const docTemplate = `{
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                                    "$ref": "#/definitions/app_internal_models.Response"
                                 },
                                 {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/ekel-backend_internal_domains_guestbook.GuestbookResponse"
+                                            "$ref": "#/definitions/app_internal_domains_guestbook.GuestbookResponse"
                                         }
                                     }
                                 }
@@ -88,7 +88,7 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -122,13 +122,13 @@ const docTemplate = `{
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                                    "$ref": "#/definitions/app_internal_models.Response"
                                 },
                                 {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/ekel-backend_internal_domains_guestbook.GuestbookResponse"
+                                            "$ref": "#/definitions/app_internal_domains_guestbook.GuestbookResponse"
                                         }
                                     }
                                 }
@@ -138,7 +138,7 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -169,7 +169,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_domains_guestbook.UpdateGuestbookRequest"
+                            "$ref": "#/definitions/app_internal_domains_guestbook.UpdateGuestbookRequest"
                         }
                     }
                 ],
@@ -179,13 +179,13 @@ const docTemplate = `{
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                                    "$ref": "#/definitions/app_internal_models.Response"
                                 },
                                 {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/ekel-backend_internal_domains_guestbook.GuestbookResponse"
+                                            "$ref": "#/definitions/app_internal_domains_guestbook.GuestbookResponse"
                                         }
                                     }
                                 }
@@ -195,7 +195,7 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -225,13 +225,13 @@ const docTemplate = `{
                     "200": {
                         "description": "Deleted",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -239,7 +239,7 @@ const docTemplate = `{
         },
         "/api/v1/ihsg/markets": {
             "get": {
-                "description": "Fetch live market data for IHSG, Nikkei 225, S\u0026P 500, SSE Composite, and Tadawul from Yahoo Finance/Stooq. Cached for 5 minutes.",
+                "description": "Fetch market data for IHSG, Nikkei 225, S\u0026P 500, SSE Composite, and Tadawul from Yahoo Finance/Stooq. Successful refreshes are cached for 30 minutes, with last-known-good data retained during provider failures.",
                 "consumes": [
                     "application/json"
                 ],
@@ -254,13 +254,13 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -293,13 +293,13 @@ const docTemplate = `{
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                                    "$ref": "#/definitions/app_internal_models.Response"
                                 },
                                 {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/definitions/ekel-backend_internal_domains_wakatime.StatsResponse"
+                                            "$ref": "#/definitions/app_internal_domains_wakatime.StatsResponse"
                                         }
                                     }
                                 }
@@ -309,7 +309,7 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ekel-backend_internal_models.Response"
+                            "$ref": "#/definitions/app_internal_models.Response"
                         }
                     }
                 }
@@ -317,7 +317,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "ekel-backend_internal_domains_guestbook.CreateGuestbookRequest": {
+        "app_internal_domains_guestbook.CreateGuestbookRequest": {
             "type": "object",
             "required": [
                 "message",
@@ -336,7 +336,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_guestbook.GuestbookResponse": {
+        "app_internal_domains_guestbook.GuestbookResponse": {
             "type": "object",
             "properties": {
                 "created_at": {
@@ -353,7 +353,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_guestbook.UpdateGuestbookRequest": {
+        "app_internal_domains_guestbook.UpdateGuestbookRequest": {
             "type": "object",
             "required": [
                 "message",
@@ -372,7 +372,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_wakatime.CategoryStat": {
+        "app_internal_domains_wakatime.CategoryStat": {
             "type": "object",
             "properties": {
                 "digital": {
@@ -398,7 +398,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_wakatime.EditorStat": {
+        "app_internal_domains_wakatime.EditorStat": {
             "type": "object",
             "properties": {
                 "digital": {
@@ -424,7 +424,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_wakatime.LangStat": {
+        "app_internal_domains_wakatime.LangStat": {
             "type": "object",
             "properties": {
                 "digital": {
@@ -450,7 +450,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_wakatime.OSStat": {
+        "app_internal_domains_wakatime.OSStat": {
             "type": "object",
             "properties": {
                 "digital": {
@@ -476,7 +476,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_wakatime.ProjectStat": {
+        "app_internal_domains_wakatime.ProjectStat": {
             "type": "object",
             "properties": {
                 "digital": {
@@ -502,13 +502,13 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_domains_wakatime.StatsResponse": {
+        "app_internal_domains_wakatime.StatsResponse": {
             "type": "object",
             "properties": {
                 "categories": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ekel-backend_internal_domains_wakatime.CategoryStat"
+                        "$ref": "#/definitions/app_internal_domains_wakatime.CategoryStat"
                     }
                 },
                 "daily_average": {
@@ -517,7 +517,7 @@ const docTemplate = `{
                 "editors": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ekel-backend_internal_domains_wakatime.EditorStat"
+                        "$ref": "#/definitions/app_internal_domains_wakatime.EditorStat"
                     }
                 },
                 "human_readable_daily_average": {
@@ -535,19 +535,19 @@ const docTemplate = `{
                 "languages": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ekel-backend_internal_domains_wakatime.LangStat"
+                        "$ref": "#/definitions/app_internal_domains_wakatime.LangStat"
                     }
                 },
                 "operating_systems": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ekel-backend_internal_domains_wakatime.OSStat"
+                        "$ref": "#/definitions/app_internal_domains_wakatime.OSStat"
                     }
                 },
                 "projects": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ekel-backend_internal_domains_wakatime.ProjectStat"
+                        "$ref": "#/definitions/app_internal_domains_wakatime.ProjectStat"
                     }
                 },
                 "range": {
@@ -558,7 +558,7 @@ const docTemplate = `{
                 }
             }
         },
-        "ekel-backend_internal_models.Response": {
+        "app_internal_models.Response": {
             "type": "object",
             "properties": {
                 "code": {

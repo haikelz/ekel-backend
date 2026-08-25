@@ -1,6 +1,6 @@
 basePath: /api/v1
 definitions:
-  ekel-backend_internal_domains_guestbook.CreateGuestbookRequest:
+  app_internal_domains_guestbook.CreateGuestbookRequest:
     properties:
       message:
         maxLength: 2000
@@ -14,7 +14,7 @@ definitions:
     - message
     - username
     type: object
-  ekel-backend_internal_domains_guestbook.GuestbookResponse:
+  app_internal_domains_guestbook.GuestbookResponse:
     properties:
       created_at:
         type: string
@@ -25,7 +25,7 @@ definitions:
       username:
         type: string
     type: object
-  ekel-backend_internal_domains_guestbook.UpdateGuestbookRequest:
+  app_internal_domains_guestbook.UpdateGuestbookRequest:
     properties:
       message:
         maxLength: 2000
@@ -39,7 +39,7 @@ definitions:
     - message
     - username
     type: object
-  ekel-backend_internal_domains_wakatime.CategoryStat:
+  app_internal_domains_wakatime.CategoryStat:
     properties:
       digital:
         type: string
@@ -56,7 +56,7 @@ definitions:
       total_seconds:
         type: number
     type: object
-  ekel-backend_internal_domains_wakatime.EditorStat:
+  app_internal_domains_wakatime.EditorStat:
     properties:
       digital:
         type: string
@@ -73,7 +73,7 @@ definitions:
       total_seconds:
         type: number
     type: object
-  ekel-backend_internal_domains_wakatime.LangStat:
+  app_internal_domains_wakatime.LangStat:
     properties:
       digital:
         type: string
@@ -90,7 +90,7 @@ definitions:
       total_seconds:
         type: number
     type: object
-  ekel-backend_internal_domains_wakatime.OSStat:
+  app_internal_domains_wakatime.OSStat:
     properties:
       digital:
         type: string
@@ -107,7 +107,7 @@ definitions:
       total_seconds:
         type: number
     type: object
-  ekel-backend_internal_domains_wakatime.ProjectStat:
+  app_internal_domains_wakatime.ProjectStat:
     properties:
       digital:
         type: string
@@ -124,17 +124,17 @@ definitions:
       total_seconds:
         type: number
     type: object
-  ekel-backend_internal_domains_wakatime.StatsResponse:
+  app_internal_domains_wakatime.StatsResponse:
     properties:
       categories:
         items:
-          $ref: '#/definitions/ekel-backend_internal_domains_wakatime.CategoryStat'
+          $ref: '#/definitions/app_internal_domains_wakatime.CategoryStat'
         type: array
       daily_average:
         type: number
       editors:
         items:
-          $ref: '#/definitions/ekel-backend_internal_domains_wakatime.EditorStat'
+          $ref: '#/definitions/app_internal_domains_wakatime.EditorStat'
         type: array
       human_readable_daily_average:
         type: string
@@ -146,22 +146,22 @@ definitions:
         type: boolean
       languages:
         items:
-          $ref: '#/definitions/ekel-backend_internal_domains_wakatime.LangStat'
+          $ref: '#/definitions/app_internal_domains_wakatime.LangStat'
         type: array
       operating_systems:
         items:
-          $ref: '#/definitions/ekel-backend_internal_domains_wakatime.OSStat'
+          $ref: '#/definitions/app_internal_domains_wakatime.OSStat'
         type: array
       projects:
         items:
-          $ref: '#/definitions/ekel-backend_internal_domains_wakatime.ProjectStat'
+          $ref: '#/definitions/app_internal_domains_wakatime.ProjectStat'
         type: array
       range:
         type: string
       total_seconds:
         type: number
     type: object
-  ekel-backend_internal_models.Response:
+  app_internal_models.Response:
     properties:
       code:
         type: integer
@@ -187,11 +187,11 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: List guestbook entries
       tags:
       - Guestbook
@@ -205,7 +205,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/ekel-backend_internal_domains_guestbook.CreateGuestbookRequest'
+          $ref: '#/definitions/app_internal_domains_guestbook.CreateGuestbookRequest'
       produces:
       - application/json
       responses:
@@ -213,15 +213,15 @@ paths:
           description: Created
           schema:
             allOf:
-            - $ref: '#/definitions/ekel-backend_internal_models.Response'
+            - $ref: '#/definitions/app_internal_models.Response'
             - properties:
                 data:
-                  $ref: '#/definitions/ekel-backend_internal_domains_guestbook.GuestbookResponse'
+                  $ref: '#/definitions/app_internal_domains_guestbook.GuestbookResponse'
               type: object
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: Create a guestbook entry
       tags:
       - Guestbook
@@ -242,11 +242,11 @@ paths:
         "200":
           description: Deleted
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: Delete a guestbook entry
       tags:
       - Guestbook
@@ -267,15 +267,15 @@ paths:
           description: OK
           schema:
             allOf:
-            - $ref: '#/definitions/ekel-backend_internal_models.Response'
+            - $ref: '#/definitions/app_internal_models.Response'
             - properties:
                 data:
-                  $ref: '#/definitions/ekel-backend_internal_domains_guestbook.GuestbookResponse'
+                  $ref: '#/definitions/app_internal_domains_guestbook.GuestbookResponse'
               type: object
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: Get a guestbook entry by ID
       tags:
       - Guestbook
@@ -294,7 +294,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/ekel-backend_internal_domains_guestbook.UpdateGuestbookRequest'
+          $ref: '#/definitions/app_internal_domains_guestbook.UpdateGuestbookRequest'
       produces:
       - application/json
       responses:
@@ -302,15 +302,15 @@ paths:
           description: Updated
           schema:
             allOf:
-            - $ref: '#/definitions/ekel-backend_internal_models.Response'
+            - $ref: '#/definitions/app_internal_models.Response'
             - properties:
                 data:
-                  $ref: '#/definitions/ekel-backend_internal_domains_guestbook.GuestbookResponse'
+                  $ref: '#/definitions/app_internal_domains_guestbook.GuestbookResponse'
               type: object
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: Update a guestbook entry
       tags:
       - Guestbook
@@ -318,19 +318,20 @@ paths:
     get:
       consumes:
       - application/json
-      description: Fetch live market data for IHSG, Nikkei 225, S&P 500, SSE Composite,
-        and Tadawul from Yahoo Finance/Stooq. Cached for 5 minutes.
+      description: Fetch market data for IHSG, Nikkei 225, S&P 500, SSE Composite,
+        and Tadawul from Yahoo Finance/Stooq. Successful refreshes are cached for
+        30 minutes, with last-known-good data retained during provider failures.
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: Get live market indices
       tags:
       - IHSG
@@ -352,15 +353,15 @@ paths:
           description: OK
           schema:
             allOf:
-            - $ref: '#/definitions/ekel-backend_internal_models.Response'
+            - $ref: '#/definitions/app_internal_models.Response'
             - properties:
                 data:
-                  $ref: '#/definitions/ekel-backend_internal_domains_wakatime.StatsResponse'
+                  $ref: '#/definitions/app_internal_domains_wakatime.StatsResponse'
               type: object
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/ekel-backend_internal_models.Response'
+            $ref: '#/definitions/app_internal_models.Response'
       summary: Get Wakatime coding stats
       tags:
       - Wakatime
