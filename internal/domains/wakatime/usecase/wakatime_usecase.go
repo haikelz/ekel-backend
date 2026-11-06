@@ -12,6 +12,16 @@ import (
 	"app/internal/domains/wakatime"
 )
 
+// Ranges documented at https://wakatime.com/developers#stats. Without a range,
+// WakaTime falls back to the public profile range, so always send one.
+var validRanges = map[string]bool{
+	"last_7_days":   true,
+	"last_30_days":  true,
+	"last_6_months": true,
+	"last_year":     true,
+	"all_time":      true,
+}
+
 type wakatimeUsecase struct {
 	client *http.Client
 }
@@ -23,17 +33,13 @@ func NewWakatimeUsecase() wakatime.WakatimeUsecase {
 }
 
 func (uc *wakatimeUsecase) GetStats(ctx context.Context, rng string) (*wakatime.StatsResponse, error) {
+	if !validRanges[rng] {
+		return nil, fmt.Errorf("unsupported range %q", rng)
+	}
+
 	baseURL := os.Getenv("WAKATIME_API_URL")
 	if baseURL == "" {
 		baseURL = "https://wakatime.com/api/v1/users/current/stats"
-	}
-
-	apiURL := baseURL
-	switch rng {
-	case "last_7_days":
-		apiURL = baseURL + "/last_7_days"
-	case "last_day":
-		apiURL = baseURL + "/last_day"
 	}
 
 	// Since 2026-11-01 WakaTime API keys only work for plugins; reads need a personal OAuth token.
@@ -42,7 +48,7 @@ func (uc *wakatimeUsecase) GetStats(ctx context.Context, rng string) (*wakatime.
 		return nil, errors.New("WAKATIME_ACCESS_TOKEN not set")
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, apiURL, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, baseURL+"/"+rng, nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}

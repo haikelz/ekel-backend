@@ -19,11 +19,11 @@ func NewWakatimeHandler(e *echo.Group, uc wakatime.WakatimeUsecase) {
 
 // GetStats Wakatime
 // @Summary Get Wakatime coding stats
-// @Description Fetch coding stats from Wakatime API. Use ?range=all_time (default), last_7_days, or last_day.
+// @Description Fetch coding stats from Wakatime API. Use ?range=all_time (default), last_7_days, last_30_days, last_6_months, or last_year.
 // @Tags Wakatime
 // @Accept json
 // @Produce json
-// @Param range query string false "Range: all_time, last_7_days, last_day"
+// @Param range query string false "Range: all_time, last_7_days, last_30_days, last_6_months, last_year"
 // @Success 200 {object} models.Response{data=wakatime.StatsResponse} "OK"
 // @Failure 400 {object} models.Response "Bad Request"
 // @Router /api/v1/wakatime/stats [get]

@@ -268,7 +268,7 @@ const docTemplate = `{
         },
         "/api/v1/wakatime/stats": {
             "get": {
-                "description": "Fetch coding stats from Wakatime API. Use ?range=all_time (default), last_7_days, or last_day.",
+                "description": "Fetch coding stats from Wakatime API. Use ?range=all_time (default), last_7_days, last_30_days, last_6_months, or last_year.",
                 "consumes": [
                     "application/json"
                 ],
@@ -282,7 +282,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Range: all_time, last_7_days, last_day",
+                        "description": "Range: all_time, last_7_days, last_30_days, last_6_months, last_year",
                         "name": "range",
                         "in": "query"
                     }

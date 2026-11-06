@@ -340,9 +340,9 @@ paths:
       consumes:
       - application/json
       description: Fetch coding stats from Wakatime API. Use ?range=all_time (default),
-        last_7_days, or last_day.
+        last_7_days, last_30_days, last_6_months, or last_year.
       parameters:
-      - description: 'Range: all_time, last_7_days, last_day'
+      - description: 'Range: all_time, last_7_days, last_30_days, last_6_months, last_year'
         in: query
         name: range
         type: string
