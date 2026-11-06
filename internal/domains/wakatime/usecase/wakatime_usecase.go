@@ -2,16 +2,14 @@ package usecase
 
 import (
 	"context"
-	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 
 	"app/internal/domains/wakatime"
-
-	"github.com/sirupsen/logrus"
 )
 
 type wakatimeUsecase struct {
@@ -38,9 +36,10 @@ func (uc *wakatimeUsecase) GetStats(ctx context.Context, rng string) (*wakatime.
 		apiURL = baseURL + "/last_day"
 	}
 
-	apiKey := os.Getenv("WAKATIME_API_KEY")
-	if apiKey == "" {
-		logrus.Warn("WAKATIME_API_KEY not set, using basic auth header")
+	// Since 2026-11-01 WakaTime API keys only work for plugins; reads need a personal OAuth token.
+	token := os.Getenv("WAKATIME_ACCESS_TOKEN")
+	if token == "" {
+		return nil, errors.New("WAKATIME_ACCESS_TOKEN not set")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, apiURL, nil)
@@ -48,8 +47,7 @@ func (uc *wakatimeUsecase) GetStats(ctx context.Context, rng string) (*wakatime.
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}
 
-	auth := base64.StdEncoding.EncodeToString([]byte(apiKey))
-	req.Header.Set("Authorization", "Basic "+auth)
+	req.Header.Set("Authorization", "Bearer "+token)
 	req.Header.Set("Content-Type", "application/json")
 
 	res, err := uc.client.Do(req)
