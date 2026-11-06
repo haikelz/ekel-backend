@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"time"
 
 	"app/internal/domains/wakatime"
 )
@@ -28,7 +29,7 @@ type wakatimeUsecase struct {
 
 func NewWakatimeUsecase() wakatime.WakatimeUsecase {
 	return &wakatimeUsecase{
-		client: &http.Client{},
+		client: &http.Client{Timeout: 10 * time.Second},
 	}
 }
 
@@ -65,6 +66,11 @@ func (uc *wakatimeUsecase) GetStats(ctx context.Context, rng string) (*wakatime.
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read response: %w", err)
+	}
+
+	// 202 means WakaTime is still refreshing the stats; keep whatever data it returned.
+	if res.StatusCode != http.StatusOK && res.StatusCode != http.StatusAccepted {
+		return nil, fmt.Errorf("wakatime returned %d: %s", res.StatusCode, body)
 	}
 
 	var raw struct {
